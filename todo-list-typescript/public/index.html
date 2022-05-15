@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDo-list</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <div class="heeder-todo-list">
+    <h2 class="title">ToDo List</h2>
+  </div>
+  <main class="main-todo-list">
+    <div class="add-new-todo">
+      <div class="todo-list-adds todo-adds">
+        <div class="todo-list-group">
+          <div class="todo-list_notation-note" role="button" aria-label="notation note">
+            <span class="notation-note_text">
+              notation note…
+            </span>
+          </div>
+          <div class="todo-inputs">
+            <div class="todo-add_title-note " role="button" aria-label="title">
+              <input type="text" class="title-note-input" placeholder="title" id="title-note-input" />
+            </div>
+            <div class="todo-add_notation-note" role="button" aria-label="notation note">
+              <textarea rows="2" class="notation-note-input" placeholder="notation note"
+                id="notation-note-input"></textarea>
+            </div>
+          </div>
+          <div class="todo-list_menu-note">
+            <div role="button" aria-label="close" class="btn-option" id="close_note">
+              close
+            </div>
+            <div role="button" aria-label="background options" class="btn-option" id="bgOptions_note">
+              bg options
+            </div>
+            <div role="button" aria-label="install Note" class="btn-option" id="install_note">
+              install Note
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="note-itmes">
+
+    </div>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+
+</html>
