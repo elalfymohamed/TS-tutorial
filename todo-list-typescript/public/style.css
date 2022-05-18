@@ -4,6 +4,20 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg-automatic: #202124;
+  --bg-red: #5c2b29;
+  --bg-orange: #614a19;
+  --bg-yellow: #635d19;
+  --bg-green: #345920;
+  --bg-blue: #2d555e;
+  --bg-purple: #5b2245;
+  --bg-black: #000000;
+  --bg-gray: #3c3f43;
+  --bd-greenish-blue: #1e3a5f;
+  --bg-grey: #442f19;
+}
+
 body {
   font-size: 16px;
   font-family: "Nunito", sans-serif;
@@ -141,9 +155,91 @@ textarea {
   background-color: rgba(154, 160, 166, 0.039);
 }
 
-.note-times {
-}
-
 .install-note_active {
   background-color: #0e2568;
+}
+
+.background-options {
+  background-color: #202124;
+  border: 1px solid #5f6368;
+  border-radius: 8px;
+  padding: 6px 10px;
+  position: absolute;
+  width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 60%), 0 2px 6px 2px rgb(0 0 0 / 30%);
+}
+
+.h-options {
+  display: none;
+}
+
+.bgOptions_note_active {
+  background-color: #0e2568;
+}
+
+.background-options .background-options-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+}
+
+.bg-option {
+  border-radius: 50px;
+  padding: 15px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bg-default {
+  background-color: var(--bg-automatic);
+  border: 1px solid #5f6368;
+}
+
+.bg-automatic {
+  background-color: var(--bg-automatic);
+  border: 1px solid #5f6368;
+}
+
+.bg-red {
+  background-color: var(--bg-red);
+  border: 1px solid var(--bg-red);
+}
+
+.bg-orange {
+  background-color: var(--bg-orange);
+  border: 1px solid var(--bg-orange);
+}
+
+.bg-yellow {
+  background-color: var(--bg-yellow);
+  border: 1px solid var(--bg-yellow);
+}
+
+.bg-green {
+  background-color: var(--bg-green);
+  border: 1px solid var(--bg-green);
+}
+
+.bg-greenish-blue {
+  background-color: var(--bd-greenish-blue);
+  border: 1px solid var(--bd-greenish-blue);
+}
+
+.bg-blue {
+  background-color: var(--bg-blue);
+  border: 1px solid var(--bg-blue);
+}
+
+.bg-purple {
+  background-color: var(--bg-purple);
+  border: 1px solid var(--bg-purple);
+}
+
+.bg-grey {
+  background-color: var(--bg-grey);
+  border: 1px solid var(--bg-grey);
 }
