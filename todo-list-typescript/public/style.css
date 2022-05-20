@@ -243,3 +243,63 @@ textarea {
   background-color: var(--bg-grey);
   border: 1px solid var(--bg-grey);
 }
+
+/* note-items */
+
+.note-items {
+  display: flex;
+  align-self: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+  overflow-wrap: break-word;
+}
+
+.note {
+  padding: 16px;
+}
+
+.todo-list-group__item {
+  margin: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: auto;
+  width: 240px;
+}
+
+.todo-list-group__item_active .todo-list-group__item-title {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.delete-todo-list {
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 24px;
+  padding: 5px 9px;
+  display: none;
+}
+.todo-list-group__item_active .delete-todo-list {
+  display: block;
+}
+.delete-todo-list:hover {
+  color: red;
+  background-color: #3c3f434b;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.todo-list-group__item-title-text {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e8eaed;
+  margin: 0;
+  padding: 0;
+}

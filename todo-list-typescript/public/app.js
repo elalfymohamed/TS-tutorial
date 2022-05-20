@@ -18,30 +18,80 @@ const titleNoteInput = document.querySelector("#title-note-input");
 const close_note = document.querySelector("#close_note");
 const bgOptions_note = document.querySelector("#bgOptions_note");
 const install_note = document.querySelector("#install_note");
-const addToDo = (e) => {
+// random Id
+const randomId = () => Math.floor(Math.random() * (999 * 100) + 100);
+const addToDo = (e, callback) => {
     e.preventDefault();
-    if (titleNoteInput.value === "" && notationNoteInput.value === "") {
-        return;
-    }
-    else {
-        todo_list.push({
+    if (titleNoteInput.value !== "" || notationNoteInput.value !== "") {
+        const todo = {
+            id: randomId(),
             title: titleNoteInput.value,
             notation: notationNoteInput.value,
             bg: isBgOption[0] || defaultBG,
             install_note: installNote,
-        });
+        };
+        todo_list.push(todo);
+        callback();
     }
     titleNoteInput.value = "";
     notationNoteInput.value = "";
-    removeClass();
-    console.log(todo_list);
 };
-// window.addEventListener("keypress", (e) => {
-//   if (e.key === "Enter") {
-//     e.preventDefault();
-//     addToDo(e);
-//   }
-// });
+const listTemplate = () => {
+    const noteItems = document.querySelector(".note-items");
+    noteItems.innerHTML = "";
+    todo_list.forEach((todo) => {
+        const { id, title, notation, bg } = todo;
+        const markup = `
+    <div class="todo-list-group__item ${bg}" data-id=${id}>
+    <div class="note">
+    <div class="todo-list-group__item-title">
+    <div class="delete-todo-list">delete</div>
+    <span class="todo-list-group__item-title-text">${title}</span>
+    </div>
+    <div class="todo-list-group__item-notation">
+      <span class="todo-list-group__item-notation-text">${notation}</span>
+      </div>
+    </div>
+  </div>`;
+        noteItems.innerHTML += markup;
+        elementHover();
+        deleteTodo();
+    });
+};
+//
+const elementHover = () => {
+    const todoGroup = document.querySelectorAll(".todo-list-group__item");
+    if (todo_list.length) {
+        todoGroup.forEach((todo) => {
+            todo.addEventListener("mouseenter", (e) => {
+                const target = e.target;
+                target.classList.add("todo-list-group__item_active");
+            });
+            todo.addEventListener("mouseover", (e) => {
+                const target = e.target;
+                target.classList.remove("todo-list-group__item_active");
+            });
+        });
+    }
+};
+// delete Todo
+const deleteTodo = () => {
+    const deleteTodo = document.querySelectorAll(".delete-todo-list");
+    deleteTodo.forEach((item) => {
+        item.addEventListener("click", (e) => {
+            var _a, _b;
+            const target = e.target;
+            const parent = (_b = (_a = target.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement) === null || _b === void 0 ? void 0 : _b.parentElement;
+            const eleId = parent === null || parent === void 0 ? void 0 : parent.dataset.id;
+            const data = todo_list.filter((item) => {
+                const { id } = item;
+                return id !== +eleId;
+            });
+            todo_list = data;
+            listTemplate();
+        });
+    });
+};
 //  function to remove class
 const removeClass = () => {
     todoListGroup.classList.remove("add-todo-action");
@@ -52,13 +102,15 @@ const removeClass = () => {
     backgroundOptions.classList.add("h-options");
     bgOptions_note.classList.remove("bgOptions_note_active");
     todoListGroup.classList.remove(isBgOption[0]);
+    isBgOption = [];
+    installNote = false;
 };
 // function to auto close the note
 const autoClose = (e) => {
     if (!todoListAdds.contains(e.target) &&
         !close_note.contains(e.target)) {
+        addToDo(e, listTemplate);
         removeClass();
-        addToDo(e);
     }
 };
 //  event listener
@@ -96,4 +148,3 @@ bgOptions_note.addEventListener("click", () => {
     bgOptions_note.classList.toggle("bgOptions_note_active");
     backgroundOptions.classList.toggle("h-options");
 });
-//
